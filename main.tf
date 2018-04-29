@@ -193,7 +193,7 @@ resource "aws_subnet" "wp_rds3_subnet" {
 
 }
 
-####RDS Subnet####
+####RDS Subnet#####
 
 resource "aws_db_subnet_group" "wp_rds_subnetgroup"{
         name ="wp_rds_subnetgroup"
