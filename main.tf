@@ -91,7 +91,7 @@ resource "aws_route_table" "wp_public_rt" {
           cidr_block = "0.0.0.0/0"
           gateway_id = "${aws_internet_gateway.wp_internet_gateway.id}"      
         }
-                tag {
+                tags {
                 Name = "wp_piblic"   
                }
                }
