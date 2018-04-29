@@ -99,7 +99,7 @@ resource "aws_route_table" "wp_public_rt" {
 resource "aws_default_route_table" "wp_private_rt"{
    default_route_table_id = "${aws_vpc.wp_vpc.default_route_table_id}"
    tags {
-   Name = "wp_public"
+   Name = "wp_private"
 
 
    }
@@ -108,7 +108,7 @@ resource "aws_default_route_table" "wp_private_rt"{
 }
 
 #### Added Subnets ######
-resource "aws_subent" "wp_public1_subnet"{
+resource "aws_subnet" "wp_public1_subnet"{
         vpc_id = "${aws_vpc.wp_vpc.id}"
         cidr_block = "${var.cidrs["public1"]}"
         map_public_ip_on_launch = true
