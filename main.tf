@@ -75,7 +75,7 @@ resource "aws_vpc" "wp_vpc"{
 
 #Internet GW
 
-recource "aws_internet_gateway" "wp_internet_gateway"{
+resource "aws_internet_gateway" "wp_internet_gateway"{
 	vpc_id = "${aws_vpc.wp_vpc.id}"
 	
 	tags {
