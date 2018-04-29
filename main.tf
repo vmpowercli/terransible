@@ -184,7 +184,7 @@ resource "aws_subnet" "wp_rds3_subnet" {
         vpc_id = "${aws_vpc.wp_vpc.id}"
         cidr_block = "${var.cidrs["rds3"]}"
         map_public_ip_on_launch = false
-        availability_zone = "${data.aws_availability_zones.available_names[2]}"
+        availability_zone = "${data.aws_availability_zones.available.names[3]}"
 
         tags {
                 Name = "wp_rds3"
