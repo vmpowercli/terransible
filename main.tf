@@ -184,7 +184,7 @@ resource "aws_subnet" "wp_rds3_subnet" {
         vpc_id = "${aws_vpc.wp_vpc.id}"
         cidr_block = "${var.cidrs["rds3"]}"
         map_public_ip_on_launch = false
-        availability_zone = "${data.aws_availability_zones.available.names[3]}"
+        availability_zone = "${data.aws_availability_zones.available.names[2]}"
 
         tags {
                 Name = "wp_rds3"
@@ -193,3 +193,37 @@ resource "aws_subnet" "wp_rds3_subnet" {
 
 }
 
+####RDS Subnet####
+
+resource "aws_db_subnet_group" "wp_rds_subnetgroup"{
+        name ="wp_rds_subnetgroup"
+        subent_ids = [ "${aws_subnet.wp_rds1._subnet.id}",
+        "${aws.subnet.wp_rds2_subnet.id}",
+        "${aws.subnet.wp.rds3_subnet.id}"
+        ]
+        tags {
+         Name = "wp_rds_sng"       
+        }
+
+}
+
+####Subnet Associations#####
+resource "aws_route_table_association" "wp_public1_assoc"{
+        subnet_id = "${aws_subnet.wp_public1_subnet.id}"
+        route_table_id = "${aws_route_table.wp_public_rt.id}"
+}
+
+resource "aws_route_table_association" "wp_public2_assoc"{
+        subnet_id = "${aws_subnet.wp_public2_subnet.id}"
+        route_table_id = "${aws_route_table.wp_public_rt.id}"
+}
+
+resource "aws_route_table_association" "wp_private1_assoc"{
+        subnet_id = "${aws_subnet.wp_private1_subnet.id}"
+        route_table_id = "${aws_route_table.wp_private_rt.id}"
+}
+
+resource "aws_route_table_association" "wp_private2_assoc"{
+        subnet_id = "${aws_subnet.wp_private2_subnet.id}"
+        route_table_id = "${aws_route_table.wp_private_rt.id}"
+}
