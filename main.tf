@@ -82,5 +82,7 @@ resource "aws_internet_gateway" "wp_internet_gateway"{
 	Name = "wp_igw"	
 }
 }
-
+output "vpc_id" {
+  value = "${aws_vpc.wp_vpc.id}"
+}
 
