@@ -58,7 +58,7 @@ EOF
 
 
 
-#--------VPC----------
+#--------VPC----------#
 
 resource "aws_vpc" "wp_vpc"{
 
