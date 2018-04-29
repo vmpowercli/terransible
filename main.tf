@@ -118,7 +118,7 @@ resource "aws_subent" "wp_public1_subnet"{
         }
 }
 
-resource "aws_subnet" "wp_public1_subnet"{
+resource "aws_subnet" "wp_public2_subnet"{
         vpc_id ="${aws_vpc.wp_vpc.id}"
         cidr_block = "${var.cidrs["public2"]}"
         map_public_ip_on_launch = true
