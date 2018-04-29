@@ -92,7 +92,7 @@ resource "aws_route_table" "wp_public_rt" {
           gateway_id = "${aws_internet_gateway.wp_internet_gateway.id}"      
         }
                 tags {
-                Name = "wp_piblic"   
+                Name = "wp_public"   
                }
                }
 
