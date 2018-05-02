@@ -292,6 +292,7 @@ resource "aws_security_group" "wp_private_sg" {
 resource "aws_security_group" "wp_rds_sg" {
   name        = "wp_rds_sg"
   description = "Used for RDS Instances"
+  vpc_id      = "${aws_vpc.wp_vpc.id}"
 
   #### SQL Access from Public/Private Security Group ####
 
