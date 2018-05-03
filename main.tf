@@ -335,7 +335,7 @@ POLICY
 ##### S3 Code Bucket ####
 
 resource "random_id" "wp_code_bucket"{
-byte_lenght = 2
+byte_length = 2
 }
 
 resource "aws_s3_bucket" "code"{
