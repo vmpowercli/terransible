@@ -440,7 +440,7 @@ resource "aws_elb" "wp_elb" {
 
 ##Randon AMI ID ##
 
-recource "random_id" "golden_ami" {
+resource "random_id" "golden_ami" {
   byte_length = 3
 }
 
