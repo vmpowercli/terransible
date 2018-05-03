@@ -402,11 +402,11 @@ EOD
 }
 
 #### Load Balancer ####
-resource "aws_elb" "wp_elb"{
+resource "aws_elb" "wp_elb" {
 name = "${var.domain_name}-elb"
 
-subnets = ["${aws_subnet.wp_public1_subnet.id",
-          "${aws_subnet.wp_public2_subnet.id}"
+subnets = ["${aws_subnet.wp_public1_subnet.id}",
+          "${aws_subnet.wp_public2_subnet.id}",
 ]
 
 security_groups = ["${aws_security_group.wp_public_sg.id}"]
@@ -434,11 +434,6 @@ cross_zone_load_balancing = true
   tags {
     name = "wp_${var.domain_name}-elb"
   }
-
-
-
-
-
 }
 
 
