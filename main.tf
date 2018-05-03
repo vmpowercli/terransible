@@ -373,7 +373,7 @@ public_key = "${file(var.public_key_path)}"
 
 #### DEV EC2 #####
 resource "aws_instance" "wp_dev"{
-instance_type = "${var.dev_instance_type"}
+instance_type = "${var.dev_instance_type}"
 ami = "${var.dev_ami}"
 
 tags {
