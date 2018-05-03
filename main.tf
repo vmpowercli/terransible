@@ -403,32 +403,32 @@ EOD
 
 #### Load Balancer ####
 resource "aws_elb" "wp_elb" {
-name = "${var.domain_name}-elb"
+  name = "${var.domain_name}-elb"
 
-subnets = ["${aws_subnet.wp_public1_subnet.id}",
-          "${aws_subnet.wp_public2_subnet.id}",
-]
+  subnets = ["${aws_subnet.wp_public1_subnet.id}",
+    "${aws_subnet.wp_public2_subnet.id}",
+  ]
 
-security_groups = ["${aws_security_group.wp_public_sg.id}"]
+  security_groups = ["${aws_security_group.wp_public_sg.id}"]
 
-listener {
-  instance_port = 80
-  instance_protocol = "http"
-  lb_port = 80
-  lb_protocol = "http"
+  listener {
+    instance_port     = 80
+    instance_protocol = "http"
+    lb_port           = 80
+    lb_protocol       = "http"
   }
 
-  health_check  {
-    healthy_threshold = "${var.elb_healthy_threshold}"
+  health_check {
+    healthy_threshold   = "${var.elb_healthy_threshold}"
     unhealthy_threshold = "${var.elb_unhealthy_threshold}"
-    timeout = "${var.elb_timeout}"
-    target = "TCP:80"
-    interval = "${var.elb_interval}"
-    }
+    timeout             = "${var.elb_timeout}"
+    target              = "TCP:80"
+    interval            = "${var.elb_interval}"
+  }
 
-cross_zone_load_balancing = true
-  idle_timeout = 400
-  connection_draining = true
+  cross_zone_load_balancing   = true
+  idle_timeout                = 400
+  connection_draining         = true
   connection_draining_timeout = 400
 
   tags {
@@ -440,29 +440,21 @@ cross_zone_load_balancing = true
 
 ##Randon AMI ID ##
 
-recource "random_id" "golden_ami"{
+recource "random_id" "golden_ami" {
   byte_length = 3
-  }
+}
 
+resource "aws_ami_from_instance" "wp_golden" {
+  name               = "wp_ami-${randon_id.golden_ami.b64}"
+  source_instance_id = "${aws_instance.wp_dev.id}"
 
-  resource "aws_ami_from_instance" "wp_golden"{
-name = "wp_ami-${randon_id.golden_ami.b64}"
-source_instance_id = "${aws_instance.wp_dev.id}"
-
-provisioner "local-exec" {
-  command = <<EOT
+  provisioner "local-exec" {
+    command = <<EOT
   cat <<EOF > userdata
   #!/bin/bash
   /usr/bin/aws s3 sync s3://${aws_s3_bucket.code.bucket} /var/www/html
   sudo /bin/echo '*/5 * * * * aws s3 sync s3://${aws_s3_bucket.code.bucket} /var/www/html' >> /var/spool/cron/root
   EOF
   EOT
+  }
 }
-
-}
-
-
-
-
-
-
