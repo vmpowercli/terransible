@@ -397,7 +397,7 @@ EOF
 EOD
 }
 
-provisioner "local-exe"{
+provisioner "local-exec"{
   command = "aws ec2 wait instance-status-ok --instance-ids ${aws_instance.wp_dev.id} --profile superhero && ansible-playbook -i aws_hosts wordpress.yml"
 }
   
