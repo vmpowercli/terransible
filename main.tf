@@ -445,7 +445,7 @@ resource "random_id" "golden_ami" {
 }
 
 resource "aws_ami_from_instance" "wp_golden" {
-  name               = "wp_ami-${randon_id.golden_ami.b64}"
+  name               = "wp_ami-${random_id.golden_ami.b64}"
   source_instance_id = "${aws_instance.wp_dev.id}"
 
   provisioner "local-exec" {
