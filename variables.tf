@@ -27,3 +27,4 @@ variable "asg_grace" {}
 variable "asg_cap" {}
 variable "asg_hct" {}
 variable "lc_instance_type" {}
+variable "delegation_set" {}
