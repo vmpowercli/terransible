@@ -474,6 +474,7 @@ resource "aws_launch_configuration" "wp_lc"{
 lifecycle {
   create_before_destroy = true
 }
+}
 
 #### Auto Scaling Group ####
 resource "aws_autoscaling_group" "wp_asg"{
@@ -502,4 +503,3 @@ create_before_destroy = true
 }
   }
 
-}
