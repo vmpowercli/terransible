@@ -461,7 +461,7 @@ resource "aws_ami_from_instance" "wp_golden" {
 
 #### Launch Configuration ####
 
-resource "aws_launch_configuration" "wp_lp"{
+resource "aws_launch_configuration" "wp_lc"{
   name_prefix = "wp_lc-"
   image_id = "${aws_ami_from_instance.wp_golden.id}"
   instance_type = "${var.lc_instance_type}"
@@ -486,7 +486,7 @@ resource "aws_autoscaling_group" "wp_sg"{
   load_balancers = ["${aws_elb.wp_elb.id}"]
 
   vpc_zone_identifier = ["${aws_subent.wp_private1_subnet.id}",
-                          "${aws_subnet.wp_private2_subnet.id}"
+                          "${aws_subnet.wp_private2_subnet.id}",
                           ]
 launch_configuration = "${aws_launch_configuration.wp_lc.name}"
 
