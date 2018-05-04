@@ -530,7 +530,6 @@ resource "aws_route53_record" "www" {
       name = "${aws_elb.wp_elb.dns_name}"
       zone_id = "${aws_elb.wp_elb.zone_id}"
       evaluate_target_health = false
-=======
     name                   = "${aws_elb.wp_elb.dns_name}"
     zone_id                = "${aws_elb.wp_elb.zone_id}"
     evaluate_target_health = false
