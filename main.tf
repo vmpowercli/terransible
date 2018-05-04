@@ -480,6 +480,7 @@ resource "aws_autoscaling_group" "wp_sg"{
   max_size = "${var.asg_max}"
   min_size = "${var.asg_min}"
   health_check_grace_period = "${var.asg_grace}"
+  health_check_type         = "${var.asg_hct}"
   desired_capacity = "${var.asg_cap}"
   force_delete = true
   load_balancers = ["${aws_elb.wp_elb.id}"]
