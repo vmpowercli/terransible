@@ -527,7 +527,6 @@ resource "aws_route53_record" "www" {
   type    = "A"
 
   alias {
-<<<<<<< HEAD
       name = "${aws_elb.wp_elb.dns_name}"
       zone_id = "${aws_elb.wp_elb.zone_id}"
       evaluate_target_health = false
@@ -535,7 +534,6 @@ resource "aws_route53_record" "www" {
     name                   = "${aws_elb.wp_elb.dns_name}"
     zone_id                = "${aws_elb.wp_elb.zone_id}"
     evaluate_target_health = false
->>>>>>> e1116d78243af80d3e4c5a66a54a3bb65dc36cf3
   }
 }
 
