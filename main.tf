@@ -254,7 +254,7 @@ resource "aws_security_group" "wp_dev_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["${var.localip}"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
     from_port   = 0
@@ -527,9 +527,9 @@ resource "aws_route53_record" "www" {
   type    = "A"
 
   alias {
-      name = "${aws_elb.wp_elb.dns_name}"
-      zone_id = "${aws_elb.wp_elb.zone_id}"
-      evaluate_target_health = false
+    name                   = "${aws_elb.wp_elb.dns_name}"
+    zone_id                = "${aws_elb.wp_elb.zone_id}"
+    evaluate_target_health = false
     name                   = "${aws_elb.wp_elb.dns_name}"
     zone_id                = "${aws_elb.wp_elb.zone_id}"
     evaluate_target_health = false
