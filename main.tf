@@ -478,7 +478,7 @@ lifecycle {
 resource "aws_autoscaling_group" "wp_sg"{
   name = "asg-${aws_launch_configuration.wp_lc.id}"
   max_size = "${var.asg_max}"
-  min_size = "${var.min_min}"
+  min_size = "${var.asg_min}"
   health_check_grace_period = "${var.asg_grace}"
   desired_capacity = "${var.asg_cap}"
   force_delete = true
