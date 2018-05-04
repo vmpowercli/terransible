@@ -549,26 +549,3 @@ resource "aws_route53_record" "db" {
   ttl = "300"
   records = ["${aws_db_instance.wp_db.address}"]
 }
-
-
-
-
-
-
-}
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-}
