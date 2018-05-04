@@ -487,7 +487,7 @@ resource "aws_autoscaling_group" "wp_sg"{
   vpc_zone_identifier = ["${aws_subent.wp_private1_subnet.id}",
                           "${aws_subnet.wp_private2_subnet.id}"
                           ]
-launch_configure = "${aws_launch_configuration.wp_lc.name}"
+launch_configuration = "${aws_launch_configuration.wp_lc.name}"
 
 tag {
   key = "Name"
